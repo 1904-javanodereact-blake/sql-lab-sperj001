@@ -50,16 +50,9 @@
         WHERE hiredate BETWEEN '2003-06-01 00:00:00' AND '2004-03-01 00:00:00';
     -- 2.7 DELETE
     -- Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
-        DELETE FROM invoiceline WHERE invoiceid = 50;
-        DELETE FROM invoiceline WHERE invoiceid = 61;
-        DELETE FROM invoiceline WHERE invoiceid = 116;
-        DELETE FROM invoiceline WHERE invoiceid = 245;
-        DELETE FROM invoiceline WHERE invoiceid = 268;
-        DELETE FROM invoiceline WHERE invoiceid = 290;
-        DELETE FROM invoiceline WHERE invoiceid = 342;
-        DELETE FROM invoice WHERE customerid = 32;
+        DELETE FROM invoiceline WHERE invoiceid In (SELECT invoiceid FROM invoice WHERE customerid IN (SELECT customerid FROM customer WHERE firstname = 'Robert' AND lastname = 'Walter'));
+        DELETE FROM invoice WHERE customerid IN (SELECT customerid FROM customer WHERE firstname = 'Robert' AND lastname = 'Walter');
         DELETE FROM customer WHERE firstname = 'Robert' AND lastname = 'Walter';
-
 -- 3.0	SQL Functions
 -- In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
     -- 3.1 System Defined Functions
