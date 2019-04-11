@@ -93,7 +93,7 @@
         ORDER BY name ASC;
     -- 7.5 SELF
     -- Task – Perform a self-join on the employee table, joining on the reportsto column.
-        SELECT t1.*, t2.reportsto
+        SELECT t1.employeeid, t2.reportsto
         FROM employee T1, employee T2;
 
 
